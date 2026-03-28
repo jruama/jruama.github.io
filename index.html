@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaime Alonso Rua Marín — Ingeniero Electrónico</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --green: #00703C;
+  --green-dark: #004d29;
+  --green-xdark: #003018;
+  --green-light: #e8f5ee;
+  --green-mid: #b2ddc4;
+  --gold: #C9A84C;
+  --gold-light: #f0d898;
+  --white: #ffffff;
+  --offwhite: #f8f9f6;
+  --gray-1: #f0f0ec;
+  --gray-2: #e0e0da;
+  --gray-3: #aaaaaa;
+  --text: #1a1a18;
+  --text-muted: #555550;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--green-dark);
+  padding: 0 1.5rem;
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 15px; font-weight: 400;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}
+.nav-links {
+  display: flex; gap: 0; overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.8);
+  font-size: 13px; text-decoration: none;
+  padding: 0 12px; height: 56px;
+  display: flex; align-items: center;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.nav-links a:hover { color: #fff; border-bottom-color: var(--gold); }
+
+/* ── BANNER HERO ── */
+.hero {
+  position: relative;
+  background: var(--green-xdark);
+  overflow: hidden;
+  min-height: 380px;
+  display: flex; align-items: center;
+}
+
+/* Patrón de fondo técnico */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,112,60,0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,112,60,0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridMove 20s linear infinite;
+}
+@keyframes gridMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(40px); }
+}
+
+/* Ondas decorativas */
+.hero::after {
+  content: '';
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.2);
+  box-shadow:
+    0 0 0 40px rgba(201,168,76,0.05),
+    0 0 0 80px rgba(201,168,76,0.04),
+    0 0 0 140px rgba(201,168,76,0.02);
+}
+
+.hero-inner {
+  position: relative; z-index: 2;
+  padding: 3rem 2rem 3rem;
+  max-width: 800px;
+  animation: fadeUp 0.8s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Línea dorada superior */
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 1rem;
+}
+.hero-line {
+  width: 40px; height: 2px;
+  background: var(--gold);
+}
+.hero-eyebrow span {
+  font-size: 12px; letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 0.8rem;
+}
+
+.hero-role {
+  font-size: clamp(14px, 3vw, 16px);
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  margin-bottom: 1.4rem;
+}
+
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.85);
+  font-size: 12px; padding: 5px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.2s;
+  background: rgba(255,255,255,0.06);
+}
+.hero-tag:hover { background: rgba(255,255,255,0.14); border-color: var(--gold); color: #fff; }
+.hero-tag svg { width: 12px; height: 12px; }
+
+/* Métricas del banner */
+.hero-metrics {
+  position: absolute; bottom: 0; right: 0;
+  z-index: 2;
+  display: flex;
+  background: rgba(0,48,24,0.7);
+  backdrop-filter: blur(8px);
+  border-top-left-radius: 12px;
+}
+.metric {
+  padding: 1rem 1.4rem;
+  border-left: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+}
+.metric:first-child { border-left: none; }
+.metric-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; color: var(--gold);
+  line-height: 1;
+}
+.metric-label {
+  font-size: 10px; color: rgba(255,255,255,0.6);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin-top: 3px;
+}
+
+/* ── SECCIONES ── */
+section { padding: 2.5rem 1.5rem; border-bottom: 1px solid var(--gray-2); }
+@media(min-width:768px){ section { padding: 2.5rem 2.5rem; } }
+
+.section-label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-label::after {
+  content: ''; flex: 1; height: 1px;
+  background: var(--green-mid);
+}
+
+/* KPI CARDS */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+@media(min-width:600px){
+  .kpi-grid { grid-template-columns: repeat(4, 1fr); }
+}
+.kpi {
+  background: var(--green-light);
+  border: 1px solid var(--green-mid);
+  border-top: 3px solid var(--green);
+  border-radius: 10px;
+  padding: 1rem;
+}
+.kpi-label { font-size: 10px; color: var(--green-dark); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px; }
+.kpi-value { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--green-dark); }
+.kpi-sub { font-size: 11px; color: var(--green); margin-top: 3px; line-height: 1.4; }
+
+/* TIMELINE */
+.timeline { display: flex; flex-direction: column; gap: 1.4rem; }
+.t-item { display: flex; gap: 1rem; }
+.t-dot-wrap { display: flex; flex-direction: column; align-items: center; padding-top: 4px; }
+.t-dot { width: 11px; height: 11px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+.t-line { flex: 1; width: 1px; background: var(--green-mid); margin-top: 6px; }
+.t-content strong { font-size: 14px; font-weight: 600; display: block; margin-bottom: 2px; }
+.t-org { font-size: 13px; color: var(--green-dark); font-weight: 600; }
+.t-desc { font-size: 13px; color: var(--text-muted); margin-top: 4px; line-height: 1.6; }
+
+/* SKILLS */
+.skills-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill {
+  background: var(--green-light); border: 1px solid var(--green-mid);
+  border-radius: 20px; font-size: 12px; font-weight: 600;
+  padding: 5px 14px; color: var(--green-dark);
+}
+
+/* PROYECTOS */
+.project {
+  background: var(--white); border: 1px solid var(--gray-2);
+  border-left: 4px solid var(--green);
+  border-radius: 10px; padding: 1.1rem 1.2rem;
+  margin-bottom: 10px;
+  transition: box-shadow 0.2s;
+}
+.project:hover { box-shadow: 0 4px 20px rgba(0,112,60,0.1); }
+.project h3 { font-size: 14px; font-weight: 600; color: var(--green-dark); margin-bottom: 6px; }
+.project p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+.project a { font-size: 12px; color: var(--green); margin-top: 8px; display: inline-block; text-decoration: none; font-weight: 600; }
+.project a:hover { text-decoration: underline; }
+
+/* CERTS */
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+.cert-card {
+  background: var(--white); border: 1px solid var(--gray-2);
+  border-top: 3px solid var(--green);
+  border-radius: 10px; padding: 1rem 1.1rem;
+}
+.cert-card h4 { font-size: 13px; font-weight: 600; color: var(--green-dark); margin-bottom: 5px; }
+.cert-card p { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+/* FOOTER */
+footer {
+  background: var(--green-dark);
+  padding: 1.5rem;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 8px;
+  text-align: center;
+}
+@media(min-width:600px){
+  footer { flex-direction: row; justify-content: space-between; padding: 1.5rem 2.5rem; }
+}
+footer p { font-size: 13px; color: rgba(255,255,255,0.6); }
+footer a { color: rgba(255,255,255,0.9); text-decoration: none; font-weight: 600; font-size: 13px; }
+footer a:hover { color: var(--gold); }
+
+/* ── RESPONSIVE METRICS: ocultar en móvil muy pequeño ── */
+@media(max-width:480px){
+  .hero-metrics { display: none; }
+  .hero-inner { padding: 2rem 1.2rem 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">Jaime Rua Marín</span>
+  <div class="nav-links">
+    <a href="#experiencia">Experiencia</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#formacion">Formación</a>
+    <a href="#certificaciones">Certificaciones</a>
+  </div>
+</nav>
+
+<!-- BANNER HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="hero-line"></div>
+      <span>Ingeniero Electrónico · EPM Colombia</span>
+    </div>
+    <h1>Jaime Alonso<br>Rua Marín</h1>
+    <p class="hero-role">
+      Instrumentación · Control · Protección<br>
+      Central Hidroeléctrica Playas — Medellín, Colombia
+    </p>
+    <div class="hero-tags">
+      <span class="hero-tag">EPM · 6 años generación hidráulica</span>
+      <span class="hero-tag">Hidroituango · 1.200 MW</span>
+      <a class="hero-tag" href="https://www.linkedin.com/in/jaime-alonso-rua-marin-6a168392" target="_blank">
+        <svg viewBox="0 0 16 16" fill="rgba(255,255,255,0.8)"><path d="M3.5 2A1.5 1.5 0 102 3.5 1.5 1.5 0 003.5 2zM2 6h3v8H2zm5 0h2.9v1.1h.1A3.2 3.2 0 0113 6c3.1 0 3 2.9 3 4v4h-3v-3.5c0-1.2-.5-2-1.5-2s-1.5.8-1.5 2V14H7z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+
+  <!-- Métricas flotantes -->
+  <div class="hero-metrics">
+    <div class="metric">
+      <div class="metric-num">19</div>
+      <div class="metric-label">Años exp.</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num">3</div>
+      <div class="metric-label">Títulos</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num">20</div>
+      <div class="metric-label">Mejoras téc.</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num">1.2GW</div>
+      <div class="metric-label">Capacidad</div>
+    </div>
+  </div>
+</div>
+
+<!-- RESUMEN -->
+<section>
+  <div class="section-label">Resumen</div>
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-label">Trayectoria</div>
+      <div class="kpi-value">19 años</div>
+      <div class="kpi-sub">Telecomunicaciones y energía eléctrica</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Sector actual</div>
+      <div class="kpi-value">Hidráulica</div>
+      <div class="kpi-sub">EPM Playas · Francis 69 MW</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Hito referente</div>
+      <div class="kpi-value">Hidroituango</div>
+      <div class="kpi-sub">1.200 MW · GIS SF6 500 kV</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Especialidad</div>
+      <div class="kpi-value">Confiabilidad</div>
+      <div class="kpi-sub">SCADA · Instrumentación · ICP</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section id="experiencia">
+  <div class="section-label">Experiencia profesional</div>
+  <div class="timeline">
+    <div class="t-item">
+      <div class="t-dot-wrap"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-content">
+        <strong>Electricista e Instrumentista — EPM Playas</strong>
+        <span class="t-org">Empresas Públicas de Medellín</span>
+        <p class="t-desc">Área de Instrumentación, Control y Protección en tres unidades Francis de 69 MW. Modernización de estatores U1 y U2 con personal propio de EPM bajo auditoría Andritz. Implementación de 20 mejoras técnicas, reduciendo 8 riesgos críticos y 12 riesgos medios en subsistemas de lubricación, refrigeración, drenaje y protecciones.</p>
+      </div>
+    </div>
+    <div class="t-item">
+      <div class="t-dot-wrap"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-content">
+        <strong>Comisionamiento — Hidroituango</strong>
+        <span class="t-org">EPM · Proyecto Hidroituango — 1.200 MW</span>
+        <p class="t-desc">Comisionamiento de servicios auxiliares de las Unidades 1 y 2. Puesta en servicio de la subestación 500 kV encapsulada tipo GIS SF6, una de las instalaciones más complejas del sistema eléctrico nacional.</p>
+      </div>
+    </div>
+    <div class="t-item">
+      <div class="t-dot-wrap"><div class="t-dot"></div></div>
+      <div class="t-content">
+        <strong>Técnico en Telecomunicaciones — Tigo UNE</strong>
+        <span class="t-org">13 años · Hogares y PYMES</span>
+        <p class="t-desc">Instalación y mantenimiento en tecnologías cobre, HFC, fibra óptica y GPON. Fusión de fibra monomodo y multimodo para redes de alta capacidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPOS -->
+<section>
+  <div class="section-label">Equipos e instrumentación</div>
+  <div class="skills-wrap">
+    <span class="skill">Fluke 9142</span>
+    <span class="skill">Fluke 754</span>
+    <span class="skill">Fluke 741B</span>
+    <span class="skill">Fluke 724</span>
+    <span class="skill">Fluke 700G08</span>
+    <span class="skill">ZERA MT551</span>
+    <span class="skill">Omicron trifásica</span>
+    <span class="skill">SCADA</span>
+    <span class="skill">PROFIBUS</span>
+    <span class="skill">Fusión fibra óptica</span>
+    <span class="skill">Python</span>
+    <span class="skill">Streamlit</span>
+    <span class="skill">Pandas · Plotly</span>
+    <span class="skill">Power BI</span>
+    <span class="skill">Git · GitHub</span>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+  <div class="section-label">Proyectos destacados</div>
+  <div class="project">
+    <h3>Modernización de Estatores — Unidades 1 y 2, Central Playas</h3>
+    <p>Participación activa en la instalación y puesta en servicio de la instrumentación de las Unidades N.° 1 y N.° 2. Primer cambio de estátor ejecutado íntegramente con personal propio de EPM bajo auditoría técnica de Andritz. En preparación para la modernización de la Unidad N.° 3, programada junio–octubre 2026.</p>
+  </div>
+  <div class="project">
+    <h3>Dashboard de Confiabilidad Operacional — Unidad 1 Playas</h3>
+    <p>Aplicación web interactiva en Python y Streamlit para análisis del impacto térmico de la modernización del estátor. KPIs, mapas de calor, comparativos ANTES vs DESPUÉS, scoring automático y exportación Excel/CSV. Desplegada en Streamlit Cloud con 8.306 registros SCADA reales.</p>
+    <a href="https://github.com/jruama/dashboard-confiabilidad-u1" target="_blank">Ver repositorio en GitHub →</a>
+  </div>
+  <div class="project">
+    <h3>Reducción de Riesgos Operacionales — EPM Playas</h3>
+    <p>Implementación de 20 mejoras técnicas estructurales en subsistemas de lubricación, refrigeración, drenaje y protecciones, reduciendo 8 riesgos críticos y 12 riesgos medios a nivel controlado, alineado al SGC de EPM.</p>
+  </div>
+</section>
+
+<!-- FORMACIÓN -->
+<section id="formacion">
+  <div class="section-label">Formación académica</div>
+  <div class="timeline">
+    <div class="t-item">
+      <div class="t-dot-wrap"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-content">
+        <strong>Ingeniería Electrónica</strong>
+        <span class="t-org">Universidad Salazar y Herrera</span>
+      </div>
+    </div>
+    <div class="t-item">
+      <div class="t-dot-wrap"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-content">
+        <strong>Tecnólogo en Supervisión de Sistemas de Potencia</strong>
+        <span class="t-org">Institución Universitaria Pascual Bravo</span>
+      </div>
+    </div>
+    <div class="t-item">
+      <div class="t-dot-wrap"><div class="t-dot"></div><div class="t-line"></div></div>
+      <div class="t-content">
+        <strong>Técnico Profesional en Redes Eléctricas de Distribución</strong>
+        <span class="t-org">Institución Universitaria Pascual Bravo</span>
+      </div>
+    </div>
+    <div class="t-item">
+      <div class="t-dot-wrap"><div class="t-dot"></div></div>
+      <div class="t-content">
+        <strong>Ingeniería de Sistemas (en curso)</strong>
+        <span class="t-org">CUN — Corporación Unificada Nacional</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICACIONES -->
+<section id="certificaciones">
+  <div class="section-label">Certificaciones y cursos</div>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <h4>Inteligencia Artificial basada en Minería de Datos</h4>
+      <p>Nivel 1 · Análisis de datos con IA</p>
+    </div>
+    <div class="cert-card">
+      <h4>Power BI</h4>
+      <p>Curso intensivo · 40 horas · Visualización y análisis de datos empresariales</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Jaime Alonso Rua Marín · Medellín, Colombia · 2026</p>
+  <a href="https://www.linkedin.com/in/jaime-alonso-rua-marin-6a168392" target="_blank">Ver perfil en LinkedIn →</a>
+</footer>
+
+</body>
+</html>
